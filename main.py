@@ -1,30 +1,23 @@
-"""
-SciTech2D - Master Science and Technology Animation Engine
-WebAssembly-stabilized (flicker-free) with full mouse/touch GUI controls.
-"""
-
 import sys
 import math
 import random
 import asyncio
-from dataclasses import dataclass
-from typing import Dict, List, Tuple
 import pygame
 
 # ==============================================================================
 # 1. METADATA REGISTRY (100 SYSTEMS)
 # ==============================================================================
 
-@dataclass
 class AnimationSpec:
-    id: int
-    name: str
-    domain: str
-    duration: float
-    loop_type: str
-    description: str
+    def __init__(self, anim_id, name, domain, duration, loop_type, description):
+        self.id = anim_id
+        self.name = name
+        self.domain = domain
+        self.duration = duration
+        self.loop_type = loop_type
+        self.description = description
 
-REGISTRY: Dict[int, AnimationSpec] = {
+REGISTRY = {
     1: AnimationSpec(1, "Double Pendulum", "Classical Mechanics", 10.0, "Chaotic", "Non-linear chaotic double pendulum via RK4 integration."),
     2: AnimationSpec(2, "Spring-Mass Damper System", "Classical Mechanics", 4.0, "Damped Periodic", "Harmonic oscillator with viscous damping."),
     3: AnimationSpec(3, "Bohr / Rutherford Atom Model", "Quantum Physics", 3.0, "Periodic Orbit", "Quantized orbital electrons with spontaneous emissions."),
@@ -76,10 +69,4 @@ REGISTRY: Dict[int, AnimationSpec] = {
     49: AnimationSpec(49, "Atmospheric Water Cycle", "Meteorology", 10.0, "Convective Loop", "Evaporation, condensation, and precipitation."),
     50: AnimationSpec(50, "EV Powertrain", "Automotive Tech", 6.0, "3-Phase Induction", "Inverter vector control driving stator rotor."),
     51: AnimationSpec(51, "Newton's Cradle", "Classical Mechanics", 4.0, "Elastic Impact", "Conservation of momentum across metal spheres."),
-    52: AnimationSpec(52, "Young's Double-Slit", "Wave Optics", 6.0, "Interference", "Diffracted coherent wave interference fringes."),
-    53: AnimationSpec(53, "Michelson Interferometer", "Optics", 5.0, "Phase Fringe", "Coherent beam recombining to produce fringe shifts."),
-    54: AnimationSpec(54, "Stirling Engine", "Thermodynamics", 3.0, "Closed Regenerative", "Displacer and power pistons alternating in heat expansion."),
-    55: AnimationSpec(55, "Cathode Ray Tube (CRT)", "Electronics", 5.0, "Beam Steering", "Electrostatic deflection plates aiming electron beam."),
-    56: AnimationSpec(56, "Doppler Effect Emitter", "Acoustics", 6.0, "Wave Compression", "Moving transmitter compressing sound wavefronts."),
-    57: AnimationSpec(57, "Gyroscope Stabilizer", "Classical Mechanics", 8.0, "Precession", "Spinning rotor demonstrating gyroscopic rigidity."),
-    58: AnimationSpec(58, "Karman Vortex Street", "Fluid Dynamics", 6.0, "Vortex Shedding", "Periodic shed vo
+    52: Animation
