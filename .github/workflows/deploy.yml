@@ -1,4 +1,4 @@
-name: Build & Deploy SciTech2D to GitHub Pages
+name: Deploy SciTech100 to GitHub Pages
 
 on:
   push:
@@ -15,23 +15,22 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Build Self-Contained Web Bundle
-        run: |
-          python build_web.py
+      - name: Compile 100 Simulations to Web
+        run: python main.py
 
       - name: Upload GitHub Pages Artifact
         uses: actions/upload-pages-artifact@v3
